@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alien Spaceship Escape</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif; /* A futuristic font */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #00FF00; /* Green sci-fi text color */
+      overflow: hidden;
+    }
+
+    /* Video background styles */
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none; /* Make sure video doesn’t interfere with user interaction */
+    }
+
+    .container {
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.9); /* Transparent box for content */
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      border: 2px solid #00FF00; /* Neon green border */
+      box-shadow: 0 0 20px #00FF00;
+      z-index: 1;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .btn, .close-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #00FF00;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 10px;
+    }
+
+    .btn:hover, .close-btn:hover {
+      background-color: #00CC00;
+    }
+
+    .instructions {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #00FF00;
+    }
+
+    .instructions h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .instructions p {
+      line-height: 1.5;
+    }
+
+    /* Responsive adjustments for iPad and other tablets */
+    @media only screen and (max-width: 768px) {
+      .container {
+        width: 95%;
+      }
+
+      .btn, .close-btn {
+        font-size: 16px;
+        padding: 12px 25px;
+      }
+
+      .instructions h2 {
+        font-size: 20px;
+      }
+
+      .instructions p {
+        font-size: 16px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- YouTube video embedded as the background -->
+<div id="video-background">
+  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/qrs6PPQznaA?autoplay=1&mute=1&loop=1&playlist=qrs6PPQznaA" frameborder="0" allow="autoplay; loop; muted" allowfullscreen></iframe>
+</div>
+
+<div class="container">
+  <h1>Alien Spaceship Escape</h1>
+  <button class="btn" onclick="toggleInstructions()">Mission Briefing</button>
+
+  <div class="instructions" id="instructions">
+    <h2>Mission Briefing:</h2>
+    <p><strong>Alert!</strong> You’ve been captured by an alien spacecraft. The ship’s systems are malfunctioning, and you’re trapped inside!</p>
+    <p>The ship's airlock is sealed, and the oxygen levels are dropping fast. Scattered around the spaceship are <strong>color-coded tubes</strong>, each labeled with a number.</p>
+    <p>Your task: Locate the hidden tubes and use the numbers on them to find the correct combination to unlock the airlock.</p>
+    <p>Time is running out. Find the clues, unlock the door, and escape the alien ship!</p>
+
+    <button class="close-btn" onclick="toggleInstructions()">Close</button>
+  </div>
+</div>
+
+<script>
+  function toggleInstructions() {
+    const instructions = document.getElementById("instructions");
+    instructions.style.display = instructions.style.display === "block" ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>
