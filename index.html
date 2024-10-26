@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Alien Spaceship Escape</title>
   <style>
     * {
@@ -29,7 +31,7 @@
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      pointer-events: none; /* Make sure video doesn’t interfere with user interaction */
+      pointer-events: none;
     }
 
     .container {
@@ -79,7 +81,6 @@
       line-height: 1.5;
     }
 
-    /* Responsive adjustments for iPad and other tablets */
     @media only screen and (max-width: 768px) {
       .container {
         width: 95%;
@@ -103,6 +104,10 @@
 </head>
 <body>
 
+<audio id="voiceoverAudio">
+  <source src="./Mission%20Briefing.mp3" type="audio/mp3">
+</audio>
+
 <!-- YouTube video embedded as the background -->
 <div id="video-background">
   <iframe width="100%" height="100%" src="https://www.youtube.com/embed/qrs6PPQznaA?autoplay=1&mute=1&loop=1&playlist=qrs6PPQznaA" frameborder="0" allow="autoplay; loop; muted" allowfullscreen></iframe>
@@ -123,10 +128,18 @@
   </div>
 </div>
 
-<script>
+<script type="text/javascript">
   function toggleInstructions() {
     const instructions = document.getElementById("instructions");
-    instructions.style.display = instructions.style.display === "block" ? "none" : "block";
+    const voiceoverAudio = document.getElementById('voiceoverAudio');
+    const modalOpen = instructions.style.display === 'block';
+    if (modalOpen) {
+      instructions.style.display = 'none';
+      voiceoverAudio.pause();
+    } else {
+      instructions.style.display = 'block';
+      voiceoverAudio.play();
+    }
   }
 </script>
 
